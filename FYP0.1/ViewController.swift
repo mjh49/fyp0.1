@@ -48,7 +48,7 @@ class ViewController: UIViewController, APIControllerProtocol {
                             // No errors found.
                             // It would be weird if we didn't have a response, so check for that too.
                             if let res = response as? HTTPURLResponse {
-                                print("Downloaded cat picture with response code \(res.statusCode)")
+                                print("Downloaded picture with response code \(res.statusCode)")
                                 self.images[i] = (UIImage(data: data! as Data)!)
                                 self.appsImageView.animationImages = self.images as NSArray as? [UIImage]
                                 self.appsImageView.startAnimating()
