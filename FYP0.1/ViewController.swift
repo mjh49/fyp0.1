@@ -43,7 +43,7 @@ class ViewController: UIViewController, APIControllerProtocol {
                     let task = URLSession.shared.dataTask(with: imgURL) { (data, response, error) in
                         // The download has finished.
                         if let e = error {
-                            print("Error downloading cat picture: \(e)")
+                            print("Error downloading picture: \(e)")
                         } else {
                             // No errors found.
                             // It would be weird if we didn't have a response, so check for that too.
