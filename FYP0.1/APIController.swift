@@ -50,6 +50,32 @@ class APIController {
         
         
     }
+    
+    func getPhpImages() {
+        let url = URL(string: "https://users.sussex.ac.uk/~mjh49/FYP/test.php")!
+        let task = URLSession.shared.dataTask(with: url) { (data, response, error) -> Void in
+            print("Task completed")
+            if let data = data {
+                do {
+                    if let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
+                        
+                        if let results: NSArray = jsonResult["results"] as? NSArray {
+                            self.delegate?.didReceiveAPIResults(results: results)
+                        }
+                        
+                    }
+                } catch let error as NSError {
+                    print(error.localizedDescription)
+                }
+            } else if let error = error {
+                print(error.localizedDescription)
+            }
+        }
+        
+        // The task is just an object with all these properties set
+        // In order to actually make the web request, we need to "resume"
+        task.resume()
+    }
 
 }
 
