@@ -72,8 +72,6 @@ class APIController {
             }
         }
         
-        // The task is just an object with all these properties set
-        // In order to actually make the web request, we need to "resume"
         task.resume()
     }
 
