@@ -11,116 +11,91 @@ import UIKit
 class ViewController: UIViewController, APIControllerProtocol {
     
     @IBOutlet var appsImageView: UIImageView!
-    var imageCache = [String:UIImage]()
-    var imageData = [] as NSArray
+    
+    @IBOutlet weak var usernameView: UILabel!
+    
+    @IBOutlet weak var tweetView: UILabel!
+    
+    
     let api = APIController()
-    var imageCount = 0
-    var images = [] as NSMutableArray
+    var tweets = NSMutableDictionary.init()
+    var tweetKey = 0
+    var tweetToShow = 0
 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         api.delegate = self
-        api.getPhpImages()
+        api.getTweet()
+            }
+        
+
+    
+    
+    func addTweetToDisplay (results: NSDictionary) {
+        tweets.setObject(results, forKey: tweetKey as NSCopying)
+        tweetKey += 1
     }
     
-    func imageView( imageView: UIImageView){
-        print("running")
-        imageCount = imageData.count
-        for i in 0...(imageCount - 1){
-            if let info: NSDictionary = self.imageData[i] as? NSDictionary,
-            // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
-            let urlString = info["artworkUrl60"] as? String,
+    func showTweet(){
+        
+        if let tweetDict : NSDictionary = tweets.object(forKey: tweetToShow) as? NSDictionary{
+        let username = tweetDict.object(forKey: "username")
+        let text = tweetDict.object(forKey: "tweet")
+        var tweetImage : UIImage
+        
+        tweetImage = UIImage()
+     
+        if tweetDict.object(forKey: "image") != nil{
+            let urlString = tweetDict.object(forKey: "image") as? String
+            print (urlString!)
             // Create an NSURL instance from the String URL we get from the API
-                let imgURL = URL(string: urlString){
-                
-                images[i] = UIImage(named: "Blank52")!
-
-                if let img = imageCache[urlString] {
-                    images[i] = img
-                } else {
-                    let task = URLSession.shared.dataTask(with: imgURL) { (data, response, error) in
-                        // The download has finished.
-                        if let e = error {
-                            print("Error downloading picture: \(e)")
-                        } else {
-                            // No errors found.
-                            // It would be weird if we didn't have a response, so check for that too.
-                            if let res = response as? HTTPURLResponse {
-                                print("Downloaded picture with response code \(res.statusCode)")
-                                self.images[i] = (UIImage(data: data! as Data)!)
-                                self.appsImageView.animationImages = self.images as NSArray as? [UIImage]
-                                self.appsImageView.startAnimating()
-                                
-                                }
-                         else {
-                                print("Couldn't get response code for some reason")
-                            }
-                        }
-                    }
-                task.resume()
-                }}}
-        self.appsImageView.animationDuration = 25
+            let imgURL = URL(string: urlString!)
         
         
+            let task = URLSession.shared.dataTask(with: imgURL!) { (data, response, error) in
+            // The download has finished.
+            if let e = error {
+                print("Error downloading picture: \(e)")
+            } else {
+                // No errors found.
+                // It would be weird if we didn't have a response, so check for that too.
+                if let res = response as? HTTPURLResponse {
+                    print("Downloaded picture with response code \(res.statusCode)")
+                    tweetImage = (UIImage(data: data! as Data)!)
+                    self.appsImageView.image = tweetImage
+                }
+                else {
+                    print("Couldn't get response code for some reason")
+                }
+            }
+            }
+            task.resume()
+        }
         
         
+        usernameView.text = username as? String
+        tweetView.text = text as? String
+        }
     }
     
-    func phpImageView (imageView: UIImageView){
-        print("running")
-        imageCount = imageData.count
-        for i in 0...(imageCount - 1){
-            if let info: NSDictionary = self.imageData[i] as? NSDictionary,
-                // Grab the artworkUrl60 key to get an image URL for the app's thumbnail
-                let urlString = info["image"] as? String,
-                // Create an NSURL instance from the String URL we get from the API
-                let imgURL = URL(string: urlString){
-                
-                images[i] = UIImage(named: "Blank52")!
-                
-                if let img = imageCache[urlString] {
-                    images[i] = img
-                } else {
-                    let task = URLSession.shared.dataTask(with: imgURL) { (data, response, error) in
-                        // The download has finished.
-                        if let e = error {
-                            print("Error downloading picture: \(e)")
-                        } else {
-                            // No errors found.
-                            // It would be weird if we didn't have a response, so check for that too.
-                            if let res = response as? HTTPURLResponse {
-                                print("Downloaded picture with response code \(res.statusCode)")
-                                self.images[i] = (UIImage(data: data! as Data)!)
-                                self.appsImageView.animationImages = self.images as NSArray as? [UIImage]
-                                self.appsImageView.startAnimating()
-                                
-                            }
-                            else {
-                                print("Couldn't get response code for some reason")
-                            }
-                        }
-                    }
-                    task.resume()
-                }}}
-        self.appsImageView.animationDuration = 25
-
+    func deleteTweet() {
+        tweets.removeObject(forKey: tweetToShow)
     }
-    
+
+
+
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
 
-    func didReceiveAPIResults(results: NSArray) {
-        DispatchQueue.main.async(execute: {
-            self.imageData = results
-            self.phpImageView(imageView: self.appsImageView)
-            
-        
-                                            })
+    func didReceiveAPIResults(results: NSDictionary) {
+            self.addTweetToDisplay(results: results)
+            self.showTweet()
+            self.deleteTweet()
+            self.tweetToShow += 1        
     }
     
     

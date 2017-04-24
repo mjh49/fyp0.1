@@ -14,7 +14,6 @@
 		2E4F99581E776E3A00FB5347 /* FYP0_1Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4F99571E776E3A00FB5347 /* FYP0_1Tests.swift */; };
 		2E4F99631E776E3A00FB5347 /* FYP0_1UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4F99621E776E3A00FB5347 /* FYP0_1UITests.swift */; };
 		2E4F99711E776E6900FB5347 /* APIController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E4F99701E776E6900FB5347 /* APIController.swift */; };
-		2E4F99731E7795AA00FB5347 /* Blank52.png in Resources */ = {isa = PBXBuildFile; fileRef = 2E4F99721E7795AA00FB5347 /* Blank52.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,41 +31,6 @@
 			remoteGlobalIDString = 2E4F99411E776E3A00FB5347;
 			remoteInfo = FYP0.1;
 		};
-		2E7167CA1E8CF92F003DE90B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E7167C21E8CF92E003DE90B /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8B300C1F1944AA1A00993175;
-			remoteInfo = SwifterDemoiOS;
-		};
-		2E7167CC1E8CF92F003DE90B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E7167C21E8CF92E003DE90B /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8B9F50EE1944A5AB00894629;
-			remoteInfo = SwifteriOS;
-		};
-		2E7167CE1E8CF92F003DE90B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E7167C21E8CF92E003DE90B /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8B9F51131944A61D00894629;
-			remoteInfo = SwifterMac;
-		};
-		2E7167D01E8CF92F003DE90B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E7167C21E8CF92E003DE90B /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 8B300C471944AECB00993175;
-			remoteInfo = SwifterDemoMac;
-		};
-		2E7167D21E8CF92F003DE90B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2E7167C21E8CF92E003DE90B /* Swifter.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F6B4D5751C7BAC4500E06514;
-			remoteInfo = SwifterTests;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -83,8 +47,6 @@
 		2E4F99621E776E3A00FB5347 /* FYP0_1UITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FYP0_1UITests.swift; sourceTree = "<group>"; };
 		2E4F99641E776E3A00FB5347 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E4F99701E776E6900FB5347 /* APIController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = APIController.swift; sourceTree = "<group>"; };
-		2E4F99721E7795AA00FB5347 /* Blank52.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Blank52.png; sourceTree = "<group>"; };
-		2E7167C21E8CF92E003DE90B /* Swifter.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Swifter.xcodeproj; path = "Swifter-master/Swifter.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +81,6 @@
 				2E4F99561E776E3A00FB5347 /* FYP0.1Tests */,
 				2E4F99611E776E3A00FB5347 /* FYP0.1UITests */,
 				2E4F99431E776E3A00FB5347 /* Products */,
-				2E7167C21E8CF92E003DE90B /* Swifter.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -137,7 +98,6 @@
 			isa = PBXGroup;
 			children = (
 				2E4F99451E776E3A00FB5347 /* AppDelegate.swift */,
-				2E4F99721E7795AA00FB5347 /* Blank52.png */,
 				2E4F99471E776E3A00FB5347 /* ViewController.swift */,
 				2E4F99701E776E6900FB5347 /* APIController.swift */,
 				2E4F99491E776E3A00FB5347 /* Main.storyboard */,
@@ -163,18 +123,6 @@
 				2E4F99641E776E3A00FB5347 /* Info.plist */,
 			);
 			path = FYP0.1UITests;
-			sourceTree = "<group>";
-		};
-		2E7167C31E8CF92E003DE90B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				2E7167CB1E8CF92F003DE90B /* SwifterDemoiOS.app */,
-				2E7167CD1E8CF92F003DE90B /* SwifteriOS.framework */,
-				2E7167CF1E8CF92F003DE90B /* SwifterMac.framework */,
-				2E7167D11E8CF92F003DE90B /* SwifterDemoMac.app */,
-				2E7167D31E8CF92F003DE90B /* SwifterTests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -273,12 +221,6 @@
 			mainGroup = 2E4F99391E776E3A00FB5347;
 			productRefGroup = 2E4F99431E776E3A00FB5347 /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = 2E7167C31E8CF92E003DE90B /* Products */;
-					ProjectRef = 2E7167C21E8CF92E003DE90B /* Swifter.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				2E4F99411E776E3A00FB5347 /* FYP0.1 */,
@@ -288,50 +230,11 @@
 		};
 /* End PBXProject section */
 
-/* Begin PBXReferenceProxy section */
-		2E7167CB1E8CF92F003DE90B /* SwifterDemoiOS.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = SwifterDemoiOS.app;
-			remoteRef = 2E7167CA1E8CF92F003DE90B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2E7167CD1E8CF92F003DE90B /* SwifteriOS.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwifteriOS.framework;
-			remoteRef = 2E7167CC1E8CF92F003DE90B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2E7167CF1E8CF92F003DE90B /* SwifterMac.framework */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.framework;
-			path = SwifterMac.framework;
-			remoteRef = 2E7167CE1E8CF92F003DE90B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2E7167D11E8CF92F003DE90B /* SwifterDemoMac.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = SwifterDemoMac.app;
-			remoteRef = 2E7167D01E8CF92F003DE90B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		2E7167D31E8CF92F003DE90B /* SwifterTests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = SwifterTests.xctest;
-			remoteRef = 2E7167D21E8CF92F003DE90B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
-
 /* Begin PBXResourcesBuildPhase section */
 		2E4F99401E776E3A00FB5347 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E4F99731E7795AA00FB5347 /* Blank52.png in Resources */,
 				2E4F994D1E776E3A00FB5347 /* Assets.xcassets in Resources */,
 				2E4F994B1E776E3A00FB5347 /* Main.storyboard in Resources */,
 			);

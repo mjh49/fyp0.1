@@ -16,42 +16,7 @@ class APIController {
     
     }
     
-    func searchItunesFor(searchTerm: String) {
-        // The iTunes API wants multiple terms separated by + symbols, so replace spaces with + signs
-        let itunesSearchTerm = searchTerm.replacingOccurrences(of:" ", with: "+", options: NSString.CompareOptions.caseInsensitive, range: nil)
-        
-        // Now escape anything else that isn't URL-friendly
-        if let escapedSearchTerm = itunesSearchTerm.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
-            let url = URL(string: "https://itunes.apple.com/search?term=\(escapedSearchTerm)&media=software")!
-            let task = URLSession.shared.dataTask(with: url) { (data, response, error) -> Void in
-                print("Task completed")
-                if let data = data {
-                    do {
-                        if let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
-                                
-                                if let results: NSArray = jsonResult["results"] as? NSArray {
-                                    self.delegate?.didReceiveAPIResults(results: results)
-                                }
-                            
-                        }
-                    } catch let error as NSError {
-                        print(error.localizedDescription)
-                    }
-                } else if let error = error {
-                    print(error.localizedDescription)
-                }
-            }
-            
-            // The task is just an object with all these properties set
-            // In order to actually make the web request, we need to "resume"
-            task.resume()
-        }
-        
-        
-        
-    }
-    
-    func getPhpImages() {
+    func getTweet() {
         let url = URL(string: "https://users.sussex.ac.uk/~mjh49/FYP/test.php")!
         let task = URLSession.shared.dataTask(with: url) { (data, response, error) -> Void in
             print("Task completed")
@@ -59,7 +24,11 @@ class APIController {
                 do {
                     if let jsonResult = try JSONSerialization.jsonObject(with: data, options: JSONSerialization.ReadingOptions.mutableContainers) as? NSDictionary {
                         
-                        if let results: NSArray = jsonResult["results"] as? NSArray {
+                        print (jsonResult)
+                        
+                        if let first: NSDictionary = jsonResult as? NSDictionary {
+                            print(first)
+                            let results : NSDictionary = first.object(forKey: "results") as! NSDictionary
                             self.delegate?.didReceiveAPIResults(results: results)
                         }
                         
@@ -78,5 +47,5 @@ class APIController {
 }
 
 protocol APIControllerProtocol {
-    func didReceiveAPIResults(results: NSArray)
+    func didReceiveAPIResults(results: NSDictionary)
 }
